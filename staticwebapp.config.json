@@ -7,7 +7,7 @@
                 "PUT"
             ],
             "allowedRoles": [
-                "authenticated"
+                "administrator"
             ]
         }
     ]
