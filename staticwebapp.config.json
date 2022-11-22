@@ -1,14 +1,13 @@
 {
-    "routes": [
-        {
-            "route": "/api/*",
-            "methods": [
-                "POST",
-                "PUT"
-            ],
-            "allowedRoles": [
-                "administrator"
-            ]
+    "auth": {
+        "identityProviders": {
+            "azureActiveDirectory": {
+                "registration": {
+                    "openIdIssuer": "https://login.microsoftonline.com/687f51c3-0c5d-4905-84f8-97c683a5b9d1/v2.0",
+                    "clientIdSettingName": "AZURE_CLIENT_ID",
+                    "clientSecretSettingName": "AZURE_CLIENT_SECRET"
+                }
+            }
         }
-    ]
+    }
 }
