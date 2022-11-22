@@ -1,0 +1,14 @@
+{
+    "routes": [
+        {
+            "route": "/api/*",
+            "methods": [
+                "POST",
+                "PUT"
+            ],
+            "allowedRoles": [
+                "authenticated"
+            ]
+        }
+    ]
+}
