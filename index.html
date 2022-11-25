@@ -5,25 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/vue"></script>
     <title>Static Web App</title>
 </head>
 
 <body>
     <main>
-        <a href="/.auth/login/aad">Login AAD</a>
+        <a href="/.auth/login/aad">Login</a>
         <br>
         <a href="/.auth/logout">Log out</a>
 
-        <h1>Azure Static Web App</h1>
-        <p>Loading message from the API: <b id="name"> ... </b></p>
+        <!-- <h1>Azure Static Web App</h1>
+        <p>Loading message from the API: <b id="name"> ... </b></p> -->
     </main>
 </body>
 
 <script>
-    (async function () {
-        let { text } = await (await fetch(`/api/GetMessage`)).json();
-        document.querySelector('#name').textContent = text;
-    }());
+    // (async function () {
+    //     let { text } = await (await fetch(`/api/GetMessage`)).json();
+    //     document.querySelector('#name').textContent = text;
+    // }());
+
+
+
 </script>
 
 </html>
