@@ -1,8 +1,51 @@
 {
     "routes": [
         {
+            "route": "/admin/*",
+            "allowedRoles": [
+                "administrator"
+            ]
+        },
+        {
+            "route": "/assets/*",
+            "headers": {
+                "cache-control": "must-revalidate, max-age=86400"
+            }
+        },
+        {
+            "route": "/api/*",
+            "methods": [
+                "GET"
+            ],
+            "allowedRoles": [
+                "registeredusers"
+            ]
+        },
+        {
+            "route": "/api/*",
+            "methods": [
+                "PUT",
+                "POST",
+                "PATCH",
+                "DELETE"
+            ],
+            "allowedRoles": [
+                "administrator"
+            ]
+        },
+        {
+            "route": "/api/*",
+            "allowedRoles": [
+                "authenticated"
+            ]
+        },
+        {
             "route": "/login",
-            "redirect": "/.auth/login/aad"
+            "rewrite": "/.auth/login/aad"
+        },
+        {
+            "route": "/.auth/login/github",
+            "statusCode": 404
         },
         {
             "route": "/.auth/login/twitter",
@@ -11,6 +54,42 @@
         {
             "route": "/logout",
             "redirect": "/.auth/logout"
+        },
+        {
+            "route": "*",
+            "allowedRoles": [
+                "authenticated"
+            ]
         }
-    ]
+    ],
+    "responseOverrides": {
+        "400": {
+            "rewrite": "/invalid-invitation-error.html"
+        },
+        "401": {
+            "redirect": "/login",
+            "statusCode": 302
+        },
+        "403": {
+            "rewrite": "/custom-forbidden-page.html"
+        },
+        "404": {
+            "rewrite": "/404.html",
+            "statusCode": 200
+        }
+    },
+    "mimeTypes": {
+        ".json": "text/json"
+    },
+    "auth": {
+        "identityProviders": {
+            "azureActiveDirectory": {
+                "registration": {
+                    "openIdIssuer": "https://login.microsoftonline.com/687f51c3-0c5d-4905-84f8-97c683a5b9d1",
+                    "clientIdSettingName": "AAD_ClientIdSettingName",
+                    "clientSecretSettingName": "AAD_ClientSecretSettingName"
+                }
+            }
+        }
+    }
 }
