@@ -1,42 +1,12 @@
 {
     "routes": [
         {
-            "route": "/admin/*",
-            "allowedRoles": [
-                "administrator"
-            ]
-        },
-        {
-            "route": "/assets/*",
-            "headers": {
-                "cache-control": "must-revalidate, max-age=86400"
-            }
-        },
-        {
             "route": "/api/*",
             "methods": [
                 "GET"
             ],
             "allowedRoles": [
                 "registeredusers"
-            ]
-        },
-        {
-            "route": "/api/*",
-            "methods": [
-                "PUT",
-                "POST",
-                "PATCH",
-                "DELETE"
-            ],
-            "allowedRoles": [
-                "administrator"
-            ]
-        },
-        {
-            "route": "/api/*",
-            "allowedRoles": [
-                "authenticated"
             ]
         },
         {
@@ -63,19 +33,9 @@
         }
     ],
     "responseOverrides": {
-        "400": {
-            "rewrite": "/invalid-invitation-error.html"
-        },
         "401": {
-            "redirect": "/login",
+            "redirect": "/.auth/login/aad?post_login_redirect_uri=.referrer",
             "statusCode": 302
-        },
-        "403": {
-            "rewrite": "/custom-forbidden-page.html"
-        },
-        "404": {
-            "rewrite": "/404.html",
-            "statusCode": 200
         }
     },
     "mimeTypes": {
