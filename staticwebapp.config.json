@@ -6,7 +6,7 @@
                 "GET"
             ],
             "allowedRoles": [
-                "registeredusers"
+                "authenticated"
             ]
         },
         {
@@ -18,7 +18,7 @@
                 "DELETE"
             ],
             "allowedRoles": [
-                "administrator"
+                "authenticated"
             ]
         },
         {
