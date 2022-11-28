@@ -6,7 +6,7 @@
                 "GET"
             ],
             "allowedRoles": [
-                "registeredusers"
+                "authenticated"
             ]
         },
         {
