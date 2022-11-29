@@ -26,14 +26,14 @@
         document.querySelector('#name').textContent = text;
     }());
 
-    // async function getUser() {
-    //     const response = await fetch('/api/user');
-    //     const payload = await response.json();
-    //     const { clientPrincipal } = payload;
-    //     return clientPrincipal;
-    // }
+    async function getUser() {
+        const response = await fetch('/api/GetUser');
+        const payload = await response.json();
+        const { clientPrincipal } = payload;
+        return clientPrincipal;
+    }
 
-    // console.log(await getUser());
+    console.log(await getUser());
 
 </script>
 
