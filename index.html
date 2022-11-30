@@ -16,6 +16,12 @@
 
         <h1>Azure Static Web App</h1>
         <p>Loading message from the API: <b id="name"> ... </b></p>
+        <br>
+        <div class="user" *ngIf="userInfo">
+            <p>Welcome</p>
+            <p>{{ userInfo?.userDetails }}</p>
+
+        </div>
     </main>
 </body>
 
@@ -25,14 +31,26 @@
         document.querySelector('#name').textContent = text;
     }());
 
-    async function getUser() {
-        const response = await fetch('/api/GetUser');
-        const payload = await response.json();
-        const { clientPrincipal } = payload;
-        return clientPrincipal;
+    async function getUserInfo() {
+        try {
+            const response = await fetch('/.auth/me');
+            const payload = await response.json();
+            const { clientPrincipal } = payload;
+            return clientPrincipal;
+        } catch (error) {
+            console.error('No profile could be found');
+            return undefined;
+        }
     }
 
-    console.log(getUser());
+    // async function getUser() {
+    //     const response = await fetch('/api/GetUser');
+    //     const payload = await response.json();
+    //     const { clientPrincipal } = payload;
+    //     return clientPrincipal;
+    // }
+
+    // console.log(getUser());
 
 </script>
 
