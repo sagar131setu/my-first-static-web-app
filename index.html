@@ -25,13 +25,22 @@
         document.querySelector('#name').textContent = text;
     }());
 
+    // async function getUserInfo() {
+    //     const response = await fetch('https://graph.microsoft.com/v1.0/me');
+    //     const payload = await response.json();
+    //     const { clientPrincipal } = payload;
+    //     return clientPrincipal;
+    // }
+
+    // console.log(await getUserInfo());
+
     async function getUser() {
         const response = await fetch('/api/GetUser');
         const payload = await response.json();
         const { clientPrincipal } = payload;
         return clientPrincipal;
     }
-    console.log(getUser());
+    document.write(getUser());
 
 </script>
 
