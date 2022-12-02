@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/vue"></script>
     <title>Static Web App</title>
 </head>
 
@@ -17,10 +18,8 @@
         <h1>Azure Static Web App</h1>
         <p>Loading message from the API: <b id="name"> ... </b></p>
         <br>
-        <div class="user" *ngIf="userInfo">
-            <p>Welcome</p>
-            <p>{{ userInfo?.userDetails }}</p>
-
+        <div class="container" style="margin-top: 10px;" v-if="user.userDetails">
+            <p>User: {{ user.userDetails }}</p>
         </div>
     </main>
 </body>
@@ -29,19 +28,17 @@
     (async function () {
         let { text } = await (await fetch(`/api/GetMessage`)).json();
         document.querySelector('#name').textContent = text;
-    }());
+    }()),
 
-    async function getUserInfo() {
-        try {
+        async function getUser() {
             const response = await fetch('/.auth/me');
             const payload = await response.json();
             const { clientPrincipal } = payload;
-            return clientPrincipal;
-        } catch (error) {
-            console.error('No profile could be found');
-            return undefined;
+            this.user = clientPrincipal;
         }
-    }
+
+    console.log(await getUserInfo());
+
 
     // async function getUser() {
     //     const response = await fetch('/api/GetUser');
