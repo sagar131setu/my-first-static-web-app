@@ -19,10 +19,11 @@
 
         <br>
 
+        <p id="demo"></p>
 
-        <form>
+        <!-- <form>
             <input type="button" onclick="getUserInfo()" value="User Details">
-        </form>
+        </form> -->
 
         <!-- <button type="button" onclick="document.write(getUserInfo())">User Details</button> -->
 
@@ -59,7 +60,8 @@
         return clientPrincipal;
     }
 
-    alert(getUserInfo());
+
+    document.getElementById("demo").innerHTML = getUserInfo().clientPrincipal
 
 
 
