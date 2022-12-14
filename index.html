@@ -19,10 +19,12 @@
 
         <br>
 
-        <p>Click on the following button for calling the function: </p>
-        <form>
+
+        <!-- <form>
             <input type="button" onclick="getUserInfo()" value="User Details">
-        </form>
+        </form> -->
+
+        <button type="button" onclick="document.write(getUserInfo())">Try it</button>
         <p>
     </main>
 </body>
@@ -56,6 +58,8 @@
         const { clientPrincipal } = payload;
         return clientPrincipal;
     }
+
+
 
 
 
